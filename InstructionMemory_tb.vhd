@@ -43,7 +43,7 @@ ARCHITECTURE behavior OF InstructionMemory_tb IS
     PORT(
          address : IN  std_logic_vector(31 downto 0);
          reset : IN  std_logic;
-			clkFPGA : IN  std_logic;
+			--clkFPGA : IN  std_logic;
          outInstruction : OUT  std_logic_vector(31 downto 0)
         );
     END COMPONENT;
@@ -52,14 +52,14 @@ ARCHITECTURE behavior OF InstructionMemory_tb IS
    --Inputs
    signal address : std_logic_vector(31 downto 0) := (others => '0');
    signal reset : std_logic := '0';
-	signal clkFPGA : std_logic := '0';
+	--signal clkFPGA : std_logic := '0';
 	
  	--Outputs
    signal outInstruction : std_logic_vector(31 downto 0);
    -- No clocks detected in port list. Replace <clock> below with 
    -- appropriate port name 
  
-   constant clkFPGA_period : time := 10 ns;
+  -- constant clkFPGA_period : time := 10 ns;
  
 BEGIN
  
@@ -67,29 +67,32 @@ BEGIN
    uut: InstructionMemory PORT MAP (
           address => address,
           reset => reset,
-			 clkFPGA => clkFPGA,
+	--		 clkFPGA => clkFPGA,
           outInstruction => outInstruction
         );
 
    -- Clock process definitions
-   clkFPGA_process :process
-   begin
-		clkFPGA <= '0';
-		wait for clkFPGA_period/2;
-		clkFPGA <= '1';
-		wait for clkFPGA_period/2;
-   end process;
+--   clkFPGA_process :process
+--   begin
+--		clkFPGA <= '0';
+--		wait for clkFPGA_period/2;
+--		clkFPGA <= '1';
+	--	wait for clkFPGA_period/2;
+   --end process;
  
 
    -- Stimulus process
    stim_proc: process
     begin		
       -- hold reset state for 100 ns.
-		reset<='1';
-		address <= "0000";
+		wait for 100 ns;
+		reset<='0';
+		address <= x"00000001";
+		wait for 100 ns;
+		reset <= '1';
       wait for 100 ns;	
 		reset<='0';
-		address <= "1110";
+		address <= "00000000000000000000000000011111";
       wait;
    end process;
 
