@@ -14,8 +14,8 @@ use std.textio.all;
 
 entity InstructionMemory is
     Port ( 
-			 -- clkFPGA : in STD_LOGIC;
-			  address : in  STD_LOGIC_VECTOR (31 downto 0);
+	   -- clkFPGA : in STD_LOGIC;
+	   address : in  STD_LOGIC_VECTOR (31 downto 0);
            reset : in  STD_LOGIC;
            outInstruction : out  STD_LOGIC_VECTOR (31 downto 0));
 end InstructionMemory;
