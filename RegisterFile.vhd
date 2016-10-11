@@ -31,6 +31,9 @@ begin
 			begin
 				if(rst = '1') then
 					RAM <= (others => x"00000000");
+					RAM(24) <= x"00000005";
+					RAM(25) <= "11111111111111111111111111111001";
+					RAM(26) <= x"0000000A";
 					Crs1 <= (others => '0');
 					Crs2 <= (others => '0');
 				else
