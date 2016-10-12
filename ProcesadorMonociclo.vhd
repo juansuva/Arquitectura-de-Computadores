@@ -94,7 +94,7 @@ begin
 	);
 
 	Inst_sumador: sumador PORT MAP(
-		constante => x"00000004" ,
+		constante => "00000000000000000000000000000001" ,
 		data => aux1,
 		data_out => aux2
 	);
