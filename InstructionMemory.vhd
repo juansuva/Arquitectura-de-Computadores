@@ -38,7 +38,7 @@ architecture arqInstructionMemory of InstructionMemory is
 		return temp_mem;
 	end function;
 	
-	signal instructions : rom_type := InitRomFromFile("testJMPL.data");
+	signal instructions : rom_type := InitRomFromFile("testJMPL2.data");
 	
 begin
 --reset,address, instructions)
