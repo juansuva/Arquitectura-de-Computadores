@@ -1,4 +1,3 @@
-
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 
@@ -102,7 +101,7 @@ begin
 	Inst_InstructionMemory: InstructionMemory PORT MAP(
 		address => aux3,
 		reset => reset,
-		outInstruction => aux4 
+		outInstruction => aux4
 	);
 
 	Inst_CU: CU PORT MAP(
