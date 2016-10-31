@@ -57,9 +57,13 @@ process(Op, Op3)
 			when "010000" => --ADDcc
 				AluOp <= "010011";
 			when "111100" => --Save
-				AluOp <= "000000";
+				AluOp <= "111100";
 			when "111101" => --Restore
-				AluOp <= "001000";
+				AluOp <= "111101";
+			when "100101" => -- SLL
+				AluOp <= "010100";
+			when "100110" => -- SRL
+				AluOp <= "010101";
 			when others =>
 				AluOp <= "111111";
 		end case;

@@ -65,6 +65,10 @@ process(AluOp, Crs1, Crs2)
 				AluResult <= Crs1 + Crs2 + Carry;
 			when "010011" => --ADDcc
 				AluResult <= Crs1 + Crs2;
+			when "010100" => --SLL
+				AluResult <= to_stdlogicvector(to_bitvector(Crs1)sll conv_integer(Crs2));
+			when "010101" => --SRL
+				AluResult <= to_stdlogicvector(to_bitvector(Crs1)srl conv_integer(Crs2));
 			when others =>
 				AluResult <= (others=>'0');
 		end case;
