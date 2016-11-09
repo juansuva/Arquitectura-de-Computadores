@@ -21,6 +21,7 @@ architecture Behavioral of WindowsManager is
 begin
 	process(op, op3, rd, rs1, rs2, cwp)
 		begin
+			ncwp <= '0';	
 			if(op = "10" and op3 = "111100") then -- Save
 				ncwp <= '0';
 			else

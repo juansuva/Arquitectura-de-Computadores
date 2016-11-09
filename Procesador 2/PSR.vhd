@@ -37,6 +37,7 @@ process(nzvc, clk, ncwp)
 	if rising_edge(clk)then
 		if(rst = '1') then
 			Carry <= '0';
+			cwp <= '0';
 		else
 			Carry <= nzvc(0);
 			cwp <= ncwp;
