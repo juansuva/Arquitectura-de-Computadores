@@ -1,5 +1,0 @@
-set -tmpdir "/home/alejandro/Documentos/Arquitectura/Procesador4/Procesador4/xst/projnav.tmp"
-set -xsthdpdir "/home/alejandro/Documentos/Arquitectura/Procesador4/Procesador4/xst"
-elaborate
--ifn DataMemory.prj
--ifmt mixed
