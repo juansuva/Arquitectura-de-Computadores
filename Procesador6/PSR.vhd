@@ -25,7 +25,8 @@ entity PSR is
            rst : in  STD_LOGIC;
 			  ncwp : in STD_LOGIC;
            Carry : out  STD_LOGIC;
-			  cwp : out STD_LOGIC);
+			  cwp : out STD_LOGIC;
+			  icc : out STD_LOGIC_VECTOR(3 downto 0));
 end PSR;
 
 architecture Behavioral of PSR is
@@ -38,7 +39,9 @@ process(nzvc, clk, ncwp)
 		if(rst = '1') then
 			Carry <= '0';
 			cwp <= '0';
+			icc <= "0000";
 		else
+			icc <= nzvc;
 			Carry <= nzvc(0);
 			cwp <= ncwp;
 		end if;

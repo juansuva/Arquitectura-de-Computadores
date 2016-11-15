@@ -16,9 +16,11 @@ entity RegisterFile is
            Rs2 : in  STD_LOGIC_VECTOR (5 downto 0);
            Rd : in  STD_LOGIC_VECTOR (5 downto 0);
            rst : in  STD_LOGIC;
+			  we: in STD_LOGIC;
            DataToWrite : in  STD_LOGIC_VECTOR (31 downto 0);
            Crs1 : out  STD_LOGIC_VECTOR (31 downto 0);
-           Crs2 : out  STD_LOGIC_VECTOR (31 downto 0));
+           Crs2 : out  STD_LOGIC_VECTOR (31 downto 0);
+			  Crd : out STD_LOGIC_VECTOR (31 downto 0));
 end RegisterFile;
 
 architecture Behavioral of RegisterFile is
@@ -31,15 +33,15 @@ begin
 			begin
 				if(rst = '1') then
 					RAM <= (others => x"00000000");
-					--RAM(24) <= x"00000005";
-					--RAM(25) <= "11111111111111111111111111111001";
-					--RAM(26) <= x"0000000A";
 					Crs1 <= (others => '0');
 					Crs2 <= (others => '0');
+					Crd <=(others => '0');
 				else
 					Crs1 <= RAM(conv_integer(Rs1));
 					Crs2 <= RAM(conv_integer(Rs2));
-					if (Rd /= "000000") then
+					Crd <= RAM(conv_integer(Rd));
+					
+					if (we = '1' and Rd /= "000000") then
 						RAM(conv_integer(Rd)) <= DataToWrite;
 					end if;
 				end if;
